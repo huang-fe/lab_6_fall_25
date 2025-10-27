@@ -530,29 +530,10 @@ class EnhancedGPTCommanderNode(Node):
                 await self.add_command(KarelMethodCommand('stop', 'stop', duration=0.5))
                 return True
         # Check for specific simple commands
-        elif "move backward" in command_text:
-            logger.info('Queueing command: Move backward')
-            await self.add_command(KarelMethodCommand('move_backward', 'move backward', duration=1.5))
-            return True
-        elif "move left" in command_text:
-            logger.info('Queueing command: Move left')
-            await self.add_command(KarelMethodCommand('move_left', 'move left', duration=1.5))
-            return True
-        elif "move right" in command_text:
-            logger.info('Queueing command: Move right')
-            await self.add_command(KarelMethodCommand('move_right', 'move right', duration=1.5))
-            return True
+        # TODO: Implement if statements for the pupper commands. "move" is done for you as an example.
         elif "move" in command_text:
             logger.info('Queueing command: Move forward')
             await self.add_command(KarelMethodCommand('move_forward', 'move forward', duration=1.5))
-            return True
-        elif "turn left" in command_text:
-            logger.info('Queueing command: Turn left')
-            await self.add_command(KarelMethodCommand('turn_left', 'turn left', duration=1.5))
-            return True
-        elif "turn right" in command_text:
-            logger.info('Queueing command: Turn right')
-            await self.add_command(KarelMethodCommand('turn_right', 'turn right', duration=1.5))
             return True
         elif "wiggle" in command_text or "dance" in command_text:
             logger.info('Queueing command: Wiggle')
