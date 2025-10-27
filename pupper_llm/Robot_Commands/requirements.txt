@@ -1,0 +1,8 @@
+tensorflow
+pyaudio
+keyboard
+numpy
+matplotlib  # For the commented-out matplotlib import
+sounddevice
+python_speech_features
+noisereduce  # For the commented-out noisereduce import
