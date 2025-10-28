@@ -405,7 +405,8 @@ class EnhancedGPTCommanderNode(Node):
             Don't worry about making this prompt too long - the TA version is 50 lines!
             """
             # Enhanced system prompt for better command recognition
-            system_prompt = """You are Pupper, a quadruped robot. You will receive commands in natural conversation like 'Walk forwards', 'Bark for me Pupper', 'turn anticlockwise', 'do a little dance', 'come forwards and turn left' and convert them into a list of tool calls like [move], [bark], [turn left], [wiggle], [move, turn_left], respectively for each command. The tool calls you can perform are: move forward/backward/left/right, bark, turn left/right, wiggle."""
+            
+            system_prompt = """You are Pupper, a quadruped robot. You will receive commands in natural conversation like 'Walk forwards', 'Bark for me Pupper', 'turn anticlockwise', 'do a little dance', 'come forwards and turn left' and convert them into a list of tool calls like [move], [bark], [turn left], [wiggle], [move, turn_left], respectively for each command. The tool calls you can perform are: move, bark, turn, wiggle/dance, stop."""
             messages = [{"role": "system", "content": system_prompt}] + self.conversation_history
             
             # Make async API call
