@@ -34,20 +34,17 @@ class KarelPupper:
         wiggle_width = 0.3
         total_wiggle_time = 3.6
         direction = 1
+        move_cmd.linear.x = 0
+        move_cmd.linear.y = 0
+        wiggle_v = 0.8
     
         start_time = time.time()
         while time.time() - start_time < total_wiggle_time:
-            if (direction):
-                self.turn_right()
-                time.sleep(wiggle_width)
-                direction = 0
-            else:
-                self.turn_left()
-                time.sleep(wiggle_width)
-                direction = 1
-            
-        self.publisher.publish(move_cmd)
-        rclpy.spin_once(self.node, timeout_sec=1.0)
+            move_cmd.angular.z = direction * wiggle_v
+            self.publisher.publish(move_cmd)
+            rclpy.spin_once(self.node, timeout_sec=0.01)
+            time.sleep(wiggle_width)
+            direction *= -1
         self.node.get_logger().info('Wwwwwwiiiiigggggllllleeeee')
         self.stop()
 
@@ -104,7 +101,7 @@ class KarelPupper:
         ################################################################################################
         move_cmd = Twist()
         move_cmd.linear.x = 0.0
-        move_cmd.angular.z = -0.8
+        move_cmd.angular.z = -1
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
         self.node.get_logger().info('Turn Left...')
@@ -117,7 +114,7 @@ class KarelPupper:
         ################################################################################################
         move_cmd = Twist()
         move_cmd.linear.x = 0.0
-        move_cmd.angular.z = 0.8
+        move_cmd.angular.z = 1
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
         self.node.get_logger().info('Turn Right...')
