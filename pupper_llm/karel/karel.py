@@ -29,26 +29,27 @@ class KarelPupper:
         self.stop()
     
     def wiggle(self):
-        move_cmd = Twist()
-        move_cmd.linear.x = 0.0
-        
-        # Alternate wiggle directions for a total of 1 second
-        wiggle_time = 5
-        single_wiggle_duration = 0.2  # seconds per half-wiggle
-        angular_speed = 0.8
-        
-        start_time = time.time()
-        direction = 1
-        while time.time() - start_time < wiggle_time:
-            move_cmd.angular.z = direction * angular_speed
-            self.publisher.publish(move_cmd)
-            rclpy.spin_once(self.node, timeout_sec=0.01)
-            time.sleep(single_wiggle_duration)
-            direction *= -1  # Switch direction
-        
-        self.stop()
 
-        self.node.get_logger().info('Wiggle!')
+        move_cmd = Twist()
+        wiggle_width = 0.3
+        total_wiggle_time = 3.6
+        direction = 1
+    
+        start_time = time.time()
+        while time.time() - start_time < total_wiggle_time:
+            if (direction):
+                self.turn_right()
+                time.sleep(wiggle_width)
+                direction = 0
+            else:
+                self.turn_left()
+                time.sleep(wiggle_width)
+                direction = 1
+            
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Wwwwwwiiiiigggggllllleeeee')
+        self.stop()
 
     def move_forward(self):
         move_cmd = Twist()
