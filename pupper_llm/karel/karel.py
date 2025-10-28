@@ -63,31 +63,65 @@ class KarelPupper:
         ################################################################################################
         # TODO: Implement move_backward method
         ################################################################################################
+        move_cmd = Twist()
+        move_cmd.linear.x = -1.0
+        move_cmd.angular.z = 0.0 
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Move forward...')
         self.stop()
 
     def move_left(self):
         ################################################################################################
         # TODO: Implement move_left method
         ################################################################################################
+        move_cmd = Twist()
+        move_cmd.linear.y = -1.0
+        move_cmd.angular.z = 0.0 
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Move forward...')
         self.stop()
+
     
     def move_right(self):
         ################################################################################################
         # TODO: Implement move_right method
         ################################################################################################
+        move_cmd = Twist()
+        move_cmd.linear.y = 1.0
+        move_cmd.angular.z = 0.0 
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Move forward...')
         self.stop()
+
     
     def turn_left(self):
         ################################################################################################
         # TODO: Implement turn_left method
         ################################################################################################
+        move_cmd = Twist()
+        move_cmd.linear.x = 0.0
+        move_cmd.angular.z = -0.8
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Move forward...')
         self.stop()
+
 
     def turn_right(self):
         ################################################################################################
         # TODO: Implement turn_right method
         ################################################################################################
+        move_cmd = Twist()
+        move_cmd.linear.x = 0.0
+        move_cmd.angular.z = 0.8
+        self.publisher.publish(move_cmd)
+        rclpy.spin_once(self.node, timeout_sec=1.0)
+        self.node.get_logger().info('Move forward...')
         self.stop()
+
 
     def bark(self):
         self.node.get_logger().info('Bark...')
