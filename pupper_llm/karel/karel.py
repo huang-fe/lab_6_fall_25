@@ -68,7 +68,7 @@ class KarelPupper:
         move_cmd.angular.z = 0.0 
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
-        self.node.get_logger().info('Move forward...')
+        self.node.get_logger().info('Move backward...')
         self.stop()
 
     def move_left(self):
@@ -80,7 +80,7 @@ class KarelPupper:
         move_cmd.angular.z = 0.0 
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
-        self.node.get_logger().info('Move forward...')
+        self.node.get_logger().info('Move Left...')
         self.stop()
 
     
@@ -93,7 +93,7 @@ class KarelPupper:
         move_cmd.angular.z = 0.0 
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
-        self.node.get_logger().info('Move forward...')
+        self.node.get_logger().info('Move Right...')
         self.stop()
 
     
@@ -106,7 +106,7 @@ class KarelPupper:
         move_cmd.angular.z = -0.8
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
-        self.node.get_logger().info('Move forward...')
+        self.node.get_logger().info('Turn Left...')
         self.stop()
 
 
@@ -119,7 +119,7 @@ class KarelPupper:
         move_cmd.angular.z = 0.8
         self.publisher.publish(move_cmd)
         rclpy.spin_once(self.node, timeout_sec=1.0)
-        self.node.get_logger().info('Move forward...')
+        self.node.get_logger().info('Turn Right...')
         self.stop()
 
 
